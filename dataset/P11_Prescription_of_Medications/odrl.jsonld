@@ -1,38 +1,35 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
-    {
-      "ex": "https://hospital-example.org/",
-      "dbo": "http://dbpedia.org/ontology/",
-      "vcard": "http://www.w3.org/2006/vcard/ns#"
-    }
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json"
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P11",
+  "uid": "ex:9c8669d7-4403-4cda-8594-6060c9b75c34",
+  "rdfs:label" : "Policy 11",
   "permission": [
     {
       "@type": "odrl:Permission",
       "assigner": {
         "@type": [
           "odrl:Party",
-          "dbo:Hospital"
+          "sch:Hospital"
         ],
-        "uid": "ex:authority",
-        "vcard:fn": "Hospital"
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
       },
       "assignee": {
         "@type": [
           "odrl:PartyCollection",
-          "vcard:Group",
-          "dbo:Physician"
+          "sch:Physician"
         ],
-        "uid": "ex:groups/medical-staff"
+        "uid": "ex:groups/medical-staff",
+        "rdfs:description" : "Anyone who belongs to the medical staff"
       },
       "action": [
-        "odrl:use",
-        "odrl:modify"
+        "use",
+        "modify"
       ],
-      "target": "ex:systems/db/tables/Medicacion"
+      "target": "db:MedicationPrescriptions"
     }
   ]
 }

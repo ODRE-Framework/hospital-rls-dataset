@@ -1,47 +1,45 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json",
     {
-      "ex": "https://hospital-example.org/",
-      "dbo": "http://dbpedia.org/ontology/",
-      "vcard": "http://www.w3.org/2006/vcard/ns#",
       "ex:patientStatus": {
         "@type": "xsd:string"
       }
     }
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P07",
+  "uid": "ex:90782d9b-ebfa-4515-8473-ddb51ecbc3c1",
+  "rdfs:label" : "Policy 07",
   "permission": [
     {
       "@type": "odrl:Permission",
       "assigner": {
         "@type": [
           "odrl:Party",
-          "dbo:Hospital"
+          "sch:Hospital"
         ],
-        "uid": "ex:authority",
-        "vcard:fn": "Hospital"
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
       },
       "assignee": {
         "@type": [
           "odrl:PartyCollection",
-          "vcard:Group",
-          "dbo:Physician"
+          "coral:EmergencyPhysician"
         ],
         "uid": "ex:groups/er-staff",
-        "vcard:fn": "ER Staff"
+        "rdfs:description" : "Anyone who belongs to the medical emergency physician team"
       },
-      "action": "odrl:read",
-      "target": "ex:systems/db/tables/Historial_Clinico",
+      "action": "read",
+      "target": "db:ClinicalRecords",
       "constraint": [
         {
           "@type": "odrl:Constraint",
           "leftOperand": "ex:patientStatus",
           "operator": "odrl:isAnyOf",
           "rightOperand": [
-            "CRITICO",
-            "EMERGENCIA"
+            "CRITIC",
+            "EMERGENCY"
           ]
         }
       ]

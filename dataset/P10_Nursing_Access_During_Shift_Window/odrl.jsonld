@@ -1,13 +1,9 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json",
     {
-      "ex": "https://hospital-example.org/",
-      "dbo": "http://dbpedia.org/ontology/",
-      "vcard": "http://www.w3.org/2006/vcard/ns#",
-      "ex:currentTime": {
-        "@type": "xsd:dateTime"
-      },
+     
       "ex:subjectShiftStart": {
         "@type": "xsd:time"
       },
@@ -17,44 +13,45 @@
     }
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P10",
+  "uid": "ex:85bc6a9b-1cce-4398-8dd0-859af7390fbb",
+  "rdfs:label" : "Policy 10",
   "permission": [
     {
       "@type": "odrl:Permission",
       "assigner": {
         "@type": [
           "odrl:Party",
-          "dbo:Hospital"
+          "sch:Hospital"
         ],
-        "uid": "ex:authority",
-        "vcard:fn": "Hospital"
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
       },
       "assignee": {
         "@type": [
           "odrl:PartyCollection",
-          "vcard:Group",
-          "dbo:Nurse"
+          "coral:NurseStaff"
         ],
-        "uid": "ex:groups/nursing-staff"
+        "uid": "ex:groups/nursing-staff",
+        "rdfs:description" : "Anyone who belongs to the nursing staff"
       },
       "action": [
-        "odrl:read",
-        "odrl:modify"
+        "read",
+        "modify"
       ],
-      "target": "ex:systems/db/tables/Medicacion",
+      "target": "db:MedicationPrescriptions",
       "constraint": [
         {
           "@type": "odrl:LogicalConstraint",
           "and": [
             {
               "@type": "odrl:Constraint",
-              "leftOperand": "ex:currentTime",
+              "leftOperand": "dateTime",
               "operator": "odrl:gteq",
               "rightOperand": "ex:subjectShiftStart"
             },
             {
               "@type": "odrl:Constraint",
-              "leftOperand": "ex:currentTime",
+              "leftOperand": "dateTime",
               "operator": "odrl:lteq",
               "rightOperand": "ex:subjectShiftEnd"
             }

@@ -1,48 +1,46 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json",
     {
-      "ex": "https://hospital-example.org/",
-      "dbo": "http://dbpedia.org/ontology/",
-      "vcard": "http://www.w3.org/2006/vcard/ns#",
       "ex:medStatus": {
         "@type": "xsd:string"
       }
     }
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P12",
+  "uid": "ex:c325c669-d899-408f-967f-2678dc2d377d",
+  "rdfs:label" : "Policy 12",
   "permission": [
     {
       "@type": "odrl:Permission",
       "assigner": {
         "@type": [
           "odrl:Party",
-          "dbo:Hospital"
+          "sch:Hospital"
         ],
-        "uid": "ex:authority",
-        "vcard:fn": "Hospital"
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
       },
       "assignee": {
         "@type": [
           "odrl:PartyCollection",
-          "vcard:Group",
-          "dbo:Pharmacist"
+          "coral:Pharmacist"
         ],
         "uid": "ex:groups/pharmacy-staff",
-        "vcard:fn": "Pharmacy Staff"
+        "rdfs:description" : "Anyone who belongs to the pharmacy staff"
       },
       "action": [
-        "odrl:read",
-        "odrl:modify"
+        "read",
+        "modify"
       ],
-      "target": "ex:systems/db/tables/Medicacion",
+      "target": "db:MedicationPrescriptions",
       "constraint": [
         {
           "@type": "odrl:Constraint",
           "leftOperand": "ex:medStatus",
           "operator": "odrl:eq",
-          "rightOperand": "PENDIENTE"
+          "rightOperand": "PENDING"
         }
       ]
     }

@@ -1,38 +1,35 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
-    {
-      "ex": "https://hospital-example.org/",
-      "dbo": "http://dbpedia.org/ontology/",
-      "vcard": "http://www.w3.org/2006/vcard/ns#"
-    }
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json"
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P02",
+  "uid": "ex:c2b7030f-ee5f-43db-b6c2-fd17a673147e",
+  "rdfs:label" : "Policy 02",
   "permission": [
     {
       "@type": "odrl:Permission",
       "assigner": {
         "@type": [
           "odrl:Party",
-          "dbo:Hospital"
+          "sch:Hospital"
         ],
-        "uid": "ex:authority",
-        "vcard:fn": "Hospital"
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
       },
       "assignee": {
         "@type": [
           "odrl:PartyCollection",
-          "vcard:Group"
+          "coral:SystemAdministrator"
         ],
         "uid": "ex:groups/admin",
-        "vcard:fn": "System Admins"
+        "rdfs:description": "Anyone who belongs to the system administrators group"
       },
       "action": [
-        "odrl:modify",
-        "odrl:delete"
+        "modify",
+        "delete"
       ],
-      "target": "ex:systems/db/tables/Empleados"
+      "target": "db:EmployeeRecords"
     }
   ]
 }

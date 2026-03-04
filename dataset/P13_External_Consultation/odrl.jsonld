@@ -1,10 +1,8 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json",
     {
-      "ex": "https://hospital-example.org/",
-      "dbo": "http://dbpedia.org/ontology/",
-      "vcard": "http://www.w3.org/2006/vcard/ns#",
       "ex:referralTargetId": {
         "@type": "@id"
       },
@@ -20,29 +18,29 @@
     }
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P13",
+  "uid": "ex:3bd86d6b-7786-4228-8609-a96ef9251f7a",
+  "rdfs:label" : "Policy 13",
   "permission": [
     {
       "@type": "odrl:Permission",
       "assigner": {
         "@type": [
           "odrl:Party",
-          "dbo:Hospital"
+          "sch:Hospital"
         ],
-        "uid": "ex:authority",
-        "vcard:fn": "Hospital"
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
       },
       "assignee": {
         "@type": [
           "odrl:PartyCollection",
-          "vcard:Group",
-          "dbo:Physician"
+          "coral:SpecialistPhysician"
         ],
         "uid": "ex:groups/medical-staff",
-        "vcard:fn": "External Specialist"
+        "vcard:fn": "Anyone who is a specialist physician"
       },
-      "action": "odrl:read",
-      "target": "ex:systems/db/tables/Historial_Clinico",
+      "action": "read",
+      "target": "db:ClinicalRecords",
       "constraint": [
         {
           "@type": "odrl:LogicalConstraint",
@@ -55,7 +53,7 @@
             },
             {
               "@type": "odrl:Constraint",
-              "leftOperand": "ex:currentTime",
+              "leftOperand": "dateTime",
               "operator": "odrl:lt",
               "rightOperand": "ex:referralExpiry"
             }

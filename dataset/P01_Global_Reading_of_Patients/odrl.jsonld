@@ -1,14 +1,11 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
-    {
-      "ex": "https://hospital-knowledge-graph.org/",
-      "db": "https://hospital-database.org/",
-      "sch": "https://schema.org/"
-    }
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json"
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P01",
+  "uid": "ex:57d3ec9f-3f32-433c-86b2-4b81fcb09540",
+  "rdfs:label" : "Policy 01",
   "permission": [
     {
       "@type": "odrl:Permission",
@@ -29,7 +26,7 @@
         "rdfs:description" : "Anyone who belongs to the medical staff"
       },
       "action": "read",
-      "target": "db:systems/db/tables/Patients"
+      "target": "db:PatientsRegistry"
     }
   ]
 }

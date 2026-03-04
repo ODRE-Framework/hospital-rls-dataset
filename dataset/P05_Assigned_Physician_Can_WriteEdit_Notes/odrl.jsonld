@@ -1,10 +1,8 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json",
     {
-      "ex": "https://hospital-example.org/",
-      "dbo": "http://dbpedia.org/ontology/",
-      "vcard": "http://www.w3.org/2006/vcard/ns#",
       "ex:subjectId": {
         "@type": "@id"
       },
@@ -14,28 +12,29 @@
     }
   ],
   "@type": "odrl:Set",
-  "uid": "ex:policy/P05",
+  "uid": "ex:e29c824e-7e51-417a-b8a2-f1b2b6cfd1c9",
+  "rdfs:label" : "Policy 05",
   "permission": [
     {
       "@type": "odrl:Permission",
       "assigner": {
         "@type": [
           "odrl:Party",
-          "dbo:Hospital"
+          "sch:Hospital"
         ],
-        "uid": "ex:authority",
-        "vcard:fn": "Hospital"
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
       },
       "assignee": {
         "@type": [
           "odrl:PartyCollection",
-          "vcard:Group",
-          "dbo:Physician"
+          "sch:Physician"
         ],
-        "uid": "ex:groups/medical-staff"
+        "uid": "ex:groups/medical-staff",
+        "rdfs:description" : "Anyone who belongs to the medical staff"
       },
-      "action": "odrl:modify",
-      "target": "ex:systems/db/tables/Historial_Clinico",
+      "action": "modify",
+      "target": "db:ClinicalRecords",
       "constraint": [
         {
           "@type": "odrl:Constraint",

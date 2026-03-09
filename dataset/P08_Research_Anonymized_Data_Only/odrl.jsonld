@@ -31,15 +31,7 @@
         "rdfs:description": "Any person who is part of the hospital research team"
       },
       "action": "read",
-      "target": "db:ClinicalRecords",
-      "constraint": [
-        {
-          "@type": "odrl:Constraint",
-          "leftOperand": "ex:isAnonymized",
-          "operator": "odrl:eq",
-          "rightOperand": true
-        }
-      ]
+      "target": "db:ClinicalRecords?isAnonymized='True'&records"
     }
   ]
 }

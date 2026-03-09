@@ -5,8 +5,8 @@
     "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json"
   ],
   "@type": "EvaluationRequest",
-  "@id": "ex:request/P01-1",
+  "@id": "ex:request/P01-2",
   "evaluatedAction": "odrl:read",
-  "evaluatedParty":  "ex:id/staff/admin/administrative1",
+  "evaluatedParty": "ex:id/staff/admin/administrative1",
   "evaluatedTarget": "db:PatientsRegistry"
 }

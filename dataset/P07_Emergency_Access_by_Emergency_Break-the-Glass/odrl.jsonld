@@ -31,18 +31,7 @@
         "rdfs:description" : "Anyone who belongs to the medical emergency physician team"
       },
       "action": "read",
-      "target": "db:ClinicalRecords",
-      "constraint": [
-        {
-          "@type": "odrl:Constraint",
-          "leftOperand": "ex:patientStatus",
-          "operator": "odrl:isAnyOf",
-          "rightOperand": [
-            "CRITIC",
-            "EMERGENCY"
-          ]
-        }
-      ]
+      "target": "db:ClinicalRecords?patient_status='CRITIC'|patient_status='EMERGENCY'"
     }
   ]
 }

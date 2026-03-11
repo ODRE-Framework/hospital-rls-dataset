@@ -11,7 +11,7 @@
   "evaluatedTarget": "db:MedicationPrescriptions",
   "requestParameters": {
     "@type" : "RequestParameter",
-    "@id" : "ex:request/P12-2/param", 
+    "@id" : "ex:request/P12/param1", 
     "value" : "DELIVERED",
     "describesFeature" :  "db:MedicationPrescriptions?status" 
   }

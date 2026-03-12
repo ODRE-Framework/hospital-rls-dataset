@@ -9,11 +9,17 @@
   "evaluatedAction": "odrl:read",
   "evaluatedParty": "ex:id/patient/patient1",
   "evaluatedTarget": "db:ClinicalRecords",
-  "requestParameters": {
+  "requestParameters": [{
       "@type" : "RequestParameter",
-      "@id" : "ex:request/P04/param",
+      "@id" : "ex:request/P04/param-identity",
       "value": "33512354C",
       "rdfs:label" : "Personal identity card number",
       "describesFeature": "sch:DigitalDocument"
-    }
+    },{
+      "@type" : "RequestParameter",
+      "@id" : "ex:request/P04/param-record",
+      "value": "33X-AF",
+      "rdfs:label" : "Clinical record ID",
+      "describesFeature": "sch:DigitalDocument"
+    }]
 }

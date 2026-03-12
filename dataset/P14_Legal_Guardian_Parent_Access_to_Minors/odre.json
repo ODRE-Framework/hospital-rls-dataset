@@ -1,0 +1,51 @@
+{
+  "@context": [
+    "http://www.w3.org/ns/odrl.jsonld",
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json",
+    {
+       "ex:patientAge": {
+        "@type": "xsd:integer"
+      },
+      "ex:resourcePatientId": {
+        "@type": "@id"
+      },
+      "ex:subjectWardList": {
+        "@type": "@id"
+      }
+    }
+  ],
+  "@type": "odrl:Set",
+  "uid": "ex:b98654ad-1a2a-4f74-9820-f4b260614b71",
+  "rdfs:label" : "Policy 14",
+  "permission": [
+    {
+      "@type": "odrl:Permission",
+      "assigner": {
+        "@type": [
+          "odrl:Party",
+          "sch:Hospital"
+        ],
+        "uid": "ex:hopital-organization",
+        "rdfs:description" : "A specific hospital that owns this policy"
+      },
+      "assignee": {
+        "@type": [
+          "odrl:PartyCollection",
+          "coral:LegalGuardian"
+        ],
+        "uid": "db:ClinicalRecords?patient_id={{patient_id}}&legal_guardian={{requester_id}}",
+        "rdfs:description" : "One of the legal guardians of an underage patient"
+      },
+      "action": "read",
+      "target": "db:ClinicalRecords?patient_id={{patient_id}}",
+      "constraint": [
+            {
+              "@type": "odrl:Constraint",
+              "leftOperand": "db:ClinicalRecords?patient_id={{patient_id}}&age",
+              "operator": "odrl:lt",
+              "rightOperand": 18
+            }
+      ]
+    }
+  ]
+}

@@ -1,18 +1,28 @@
 {
   "@context": [
     "http://www.w3.org/ns/odrl.jsonld",
-    "https://raw.githubusercontent.com/w3c/odrl/refs/heads/master/ formal-semantics/ontology/evaluation_request.json",
-    {
-      "ex": "https://hospital-example.org/"
-    }
+    "https://raw.githubusercontent.com/w3c/odrl/refs/heads/master/formal-semantics/ontology/evaluation_request.json",
+    "https://raw.githubusercontent.com/ODRE-Framework/hospital-rls-dataset/refs/heads/main/context.json"
   ],
   "@type": "EvaluationRequest",
   "@id": "ex:request/P09-2",
   "evaluatedAction": "odrl:modify",
-  "evaluatedParty": "ex:id/staff/admin/ADM-1",
-  "evaluatedTarget": "ex:systems/db/tables/Citas",
-  "requestParameters": {
-    "value": "OK",
-    "describesFeature": "ex:financialStatus"
-  }
+  "evaluatedParty": "ex:id/staff/admin/administrator1",
+  "evaluatedTarget": "db:AppointmentScheduling",
+  "requestParameters": [ "requestParameters": [{
+      "@type" : "RequestParameter",
+      "@id" : "ex:request/P09/param-identity",
+      "value": "Y3237068Q",
+      "rdfs:label" : "Personal identity card number that has debs",
+      "describesFeature": "sch:DigitalDocument"
+    },{
+      "@type" : "RequestParameter",
+      "@id" : "ex:request/P09/param-schedule",
+      "value": "2026-03-12 15:00:03",
+      "rdfs:label" : "Personal identity card number",
+      "describesFeature": "sotw:TemporalData"
+    }]
 }
+
+
+
